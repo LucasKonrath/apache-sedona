@@ -1,0 +1,12 @@
+# Add your spatial data files here
+# Supported formats: Shapefile, GeoJSON, CSV with WKT, etc.
+
+# Example data structure:
+# - cities/
+#   - cities.shp
+#   - cities.shx
+#   - cities.dbf
+# - geojson/
+#   - countries.geojson
+# - csv/
+#   - points_with_wkt.csv

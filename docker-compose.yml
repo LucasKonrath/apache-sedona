@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # Spark Master
+  spark-master:
+    build: .
+    container_name: sedona-master
+    ports:
+      - "8080:8080"  # Spark Master Web UI
+      - "7077:7077"  # Spark Master port
+      - "4040:4040"  # Spark Application UI
+    environment:
+      - SPARK_MODE=master
+    command: master
+    volumes:
+      - ./data:/workspace/data
+      - ./notebooks:/workspace/notebooks
+    networks:
+      - sedona-network
+
+  # Spark Worker
+  spark-worker:
+    build: .
+    container_name: sedona-worker
+    ports:
+      - "8081:8081"  # Spark Worker Web UI
+    environment:
+      - SPARK_MODE=worker
+    command: worker spark://spark-master:7077
+    depends_on:
+      - spark-master
+    volumes:
+      - ./data:/workspace/data
+      - ./notebooks:/workspace/notebooks
+    networks:
+      - sedona-network
+
+  # Jupyter Notebook service
+  jupyter:
+    build: .
+    container_name: sedona-jupyter
+    ports:
+      - "8888:8888"  # Jupyter Notebook
+    command: jupyter
+    volumes:
+      - ./notebooks:/workspace/notebooks
+      - ./data:/workspace/data
+    networks:
+      - sedona-network
+
+  # Standalone PySpark service
+  pyspark:
+    build: .
+    container_name: sedona-pyspark
+    stdin_open: true
+    tty: true
+    command: pyspark
+    volumes:
+      - ./data:/workspace/data
+      - ./notebooks:/workspace/notebooks
+    networks:
+      - sedona-network
+
+networks:
+  sedona-network:
+    driver: bridge
+
+volumes:
+  spark-logs:
