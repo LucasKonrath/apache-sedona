@@ -8,7 +8,7 @@ This repository provides a complete Docker environment for Apache Sedona, a clus
 - **Apache Sedona 1.4.1** with all core modules
 - **Python/PySpark integration** with spatial libraries
 - **Jupyter Notebook** environment for interactive development
-- **Multi-service setup** with Docker Compose
+- **Multi-service setup** with Docker Compose   
 - **Example notebooks** and spatial data processing workflows
 
 ## Quick Start
@@ -157,9 +157,18 @@ services:
 
 ### Common Issues
 
-1. **Port conflicts**: Change ports in `docker-compose.yml` if already in use
-2. **Memory issues**: Increase Docker memory allocation
-3. **Data access**: Ensure data files are in the `data/` directory
+1. **NoClassDefFoundError: org/opengis/referencing/NoSuchAuthorityCodeException**
+   - **Cause**: Missing GeoTools dependencies
+   - **Solution**: Run `./sedona.sh fix-geotools` to rebuild with the fix
+   - **Alternative**: `docker-compose build --no-cache && docker-compose up -d`
+
+2. **Port conflicts**: Change ports in `docker-compose.yml` if already in use
+
+3. **Memory issues**: Increase Docker memory allocation
+
+4. **Data access**: Ensure data files are in the `data/` directory
+
+5. **Spark initialization errors**: Check logs with `./sedona.sh logs`
 
 ### Logs and Debugging
 ```bash

@@ -32,6 +32,7 @@ print_usage() {
     echo "  status        Show status of running services"
     echo "  clean         Stop services and remove containers"
     echo "  purge         Remove everything including images and volumes"
+    echo "  fix-geotools  Rebuild image with GeoTools fix for NoClassDefFoundError"
     echo ""
     echo "Examples:"
     echo "  $0 start              # Start all services"
@@ -76,8 +77,10 @@ restart_services() {
 
 build_image() {
     echo -e "${YELLOW}Building Apache Sedona Docker image...${NC}"
+    echo -e "${BLUE}Note: This will download GeoTools JARs to fix NoClassDefFoundError issues${NC}"
     docker-compose build --no-cache
     echo -e "${GREEN}Image built successfully.${NC}"
+    echo -e "${BLUE}The image now includes GeoTools dependencies for proper spatial operations.${NC}"
 }
 
 start_jupyter() {
@@ -175,6 +178,14 @@ case "${1:-help}" in
         ;;
     "purge")
         purge_environment
+        ;;
+    "fix-geotools")
+        echo -e "${YELLOW}Rebuilding image with GeoTools fix...${NC}"
+        echo -e "${BLUE}This fixes NoClassDefFoundError: org/opengis/referencing/NoSuchAuthorityCodeException${NC}"
+        docker-compose down
+        docker-compose build --no-cache
+        docker-compose up -d
+        echo -e "${GREEN}Fixed! GeoTools dependencies are now included.${NC}"
         ;;
     "help"|"--help"|"-h")
         print_usage
