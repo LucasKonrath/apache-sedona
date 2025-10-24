@@ -34,21 +34,33 @@ RUN wget -q -P $SPARK_HOME/jars/ \
     && wget -q -P $SPARK_HOME/jars/ \
     https://repo1.maven.org/maven2/org/apache/sedona/sedona-python-adapter-3.0_2.12/${SEDONA_VERSION}/sedona-python-adapter-3.0_2.12-${SEDONA_VERSION}.jar
 
-# Download GeoTools dependencies to fix NoClassDefFoundError for OpenGIS classes
+# Download complete GeoTools dependencies to fix NoClassDefFoundError
+# Using GeoTools 28.2 for better compatibility with Sedona 1.4.1
+ENV GEOTOOLS_VERSION=28.2
 RUN wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/org/geotools/gt-referencing/29.2/gt-referencing-29.2.jar \
+    https://repo1.maven.org/maven2/org/geotools/gt-opengis/${GEOTOOLS_VERSION}/gt-opengis-${GEOTOOLS_VERSION}.jar \
     && wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/org/geotools/gt-epsg-hsql/29.2/gt-epsg-hsql-29.2.jar \
+    https://repo1.maven.org/maven2/org/geotools/gt-referencing/${GEOTOOLS_VERSION}/gt-referencing-${GEOTOOLS_VERSION}.jar \
     && wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/org/geotools/gt-main/29.2/gt-main-29.2.jar \
+    https://repo1.maven.org/maven2/org/geotools/gt-metadata/${GEOTOOLS_VERSION}/gt-metadata-${GEOTOOLS_VERSION}.jar \
     && wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/org/geotools/gt-metadata/29.2/gt-metadata-29.2.jar \
+    https://repo1.maven.org/maven2/org/geotools/gt-main/${GEOTOOLS_VERSION}/gt-main-${GEOTOOLS_VERSION}.jar \
     && wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/org/geotools/gt-opengis/29.2/gt-opengis-29.2.jar \
+    https://repo1.maven.org/maven2/org/geotools/gt-epsg-hsql/${GEOTOOLS_VERSION}/gt-epsg-hsql-${GEOTOOLS_VERSION}.jar \
+    && wget -q -P $SPARK_HOME/jars/ \
+    https://repo1.maven.org/maven2/org/geotools/gt-crs/${GEOTOOLS_VERSION}/gt-crs-${GEOTOOLS_VERSION}.jar \
     && wget -q -P $SPARK_HOME/jars/ \
     https://repo1.maven.org/maven2/org/hsqldb/hsqldb/2.7.1/hsqldb-2.7.1.jar \
     && wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/javax/media/jai_core/1.1.3/jai_core-1.1.3.jar
+    https://repo1.maven.org/maven2/javax/media/jai_core/1.1.3/jai_core-1.1.3.jar \
+    && wget -q -P $SPARK_HOME/jars/ \
+    https://repo1.maven.org/maven2/org/locationtech/jts/jts-core/1.19.0/jts-core-1.19.0.jar \
+    && wget -q -P $SPARK_HOME/jars/ \
+    https://repo1.maven.org/maven2/systems/uom/systems-common/2.1/systems-common-2.1.jar \
+    && wget -q -P $SPARK_HOME/jars/ \
+    https://repo1.maven.org/maven2/tech/units/indriya/2.1.3/indriya-2.1.3.jar \
+    && wget -q -P $SPARK_HOME/jars/ \
+    https://repo1.maven.org/maven2/javax/measure/unit-api/2.1.3/unit-api-2.1.3.jar
 
 # Install GeoSpark/Sedona Python dependencies
 RUN pip3 install --no-cache-dir \
