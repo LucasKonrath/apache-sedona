@@ -34,29 +34,38 @@ RUN wget -q -P $SPARK_HOME/jars/ \
     && wget -q -P $SPARK_HOME/jars/ \
     https://repo1.maven.org/maven2/org/apache/sedona/sedona-python-adapter-3.0_2.12/${SEDONA_VERSION}/sedona-python-adapter-3.0_2.12-${SEDONA_VERSION}.jar
 
-# Simplified approach: Download only the most essential GeoTools JARs
-# Focus on the specific classes causing NoClassDefFoundError
-RUN echo "Downloading essential GeoTools dependencies..." && \
+# Download GeoTools wrapper - ESSENTIAL for Sedona spatial functions
+# This fixes the FactoryException and provides full GeoTools functionality
+RUN echo "Downloading GeoTools wrapper for Sedona ${SEDONA_VERSION}..." && \
     wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/org/locationtech/jts/jts-core/1.19.0/jts-core-1.19.0.jar && \
-    echo "JTS Core downloaded successfully"
+    https://repo1.maven.org/maven2/org/datasyslab/geotools-wrapper/1.4.0-28.2/geotools-wrapper-1.4.0-28.2.jar && \
+    echo "GeoTools wrapper downloaded successfully (fixes FactoryException)"
 
-# Try to download GeoTools OpenGIS API (the main missing class)
+# Download additional spatial dependencies
 RUN wget -q -P $SPARK_HOME/jars/ \
-    https://maven.geo-solutions.it/org/geotools/gt-opengis/24.2/gt-opengis-24.2.jar || \
+    https://repo1.maven.org/maven2/org/locationtech/jts/jts-core/1.19.0/jts-core-1.19.0.jar && \
     wget -q -P $SPARK_HOME/jars/ \
     https://repo1.maven.org/maven2/org/opengis/geoapi/3.0.1/geoapi-3.0.1.jar && \
-    echo "OpenGIS API downloaded"
+    echo "Spatial dependencies downloaded successfully"
 
-# Install GeoSpark/Sedona Python dependencies
+# Install comprehensive Python dependencies for advanced spatial analytics
 RUN pip3 install --no-cache-dir \
     apache-sedona==${SEDONA_VERSION} \
     pyspark==${SPARK_VERSION} \
     geopandas \
     folium \
     matplotlib \
+    seaborn \
+    plotly \
     jupyter \
-    notebook
+    notebook \
+    shapely \
+    pandas \
+    numpy \
+    scipy \
+    scikit-learn \
+    ipywidgets \
+    jupyterlab
 
 # Create working directory
 WORKDIR /workspace

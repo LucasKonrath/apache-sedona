@@ -1,13 +1,27 @@
 # Apache Sedona Docker Environment
 
-This repository provides a complete Docker environment for Apache Sedona, a cluster computing system for processing large-scale spatial data with Apache Spark.
+A production-ready Docker setup for **Apache Sedona** spatial analytics with **Apache Spark 3.4.0**, featuring a complete data science stack and advanced spatial capabilities.
 
-## Features
+## 🎯 Features
 
-- **Apache Spark 3.4.0** with Hadoop 3 support
-- **Apache Sedona 1.4.1** with all core modules
-- **Python/PySpark integration** with spatial libraries
-- **Jupyter Notebook** environment for interactive development
+### **Core Spatial Stack**
+- **Apache Spark 3.4.0** - Distributed computing with Hadoop 3 support
+- **Apache Sedona 1.4.1** - Complete spatial data processing system
+- **GeoTools Wrapper** - Full spatial functionality ✅ **(Fixes FactoryException)**
+- **Python/PySpark Integration** - Seamless spatial analytics in Python
+
+### **Advanced Analytics & ML**
+- **PySpark ML** - Machine learning with spatial features
+- **Scikit-learn** - Additional ML algorithms and metrics
+- **NumPy & Pandas** - High-performance data manipulation
+- **SciPy** - Scientific computing and optimization
+
+### **Rich Visualization Suite**
+- **Jupyter Notebook/Lab** - Interactive development environment
+- **Matplotlib & Seaborn** - Statistical plotting and visualization
+- **Plotly** - Interactive charts and dashboards  
+- **Folium** - Interactive maps with heatmaps and overlays
+- **GeoPandas & Shapely** - Geospatial data manipulation
 - **Multi-service setup** with Docker Compose   
 - **Example notebooks** and spatial data processing workflows
 

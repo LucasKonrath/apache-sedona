@@ -1,5 +1,12 @@
 version: '3.8'
 
+# Apache Sedona Docker Compose Configuration
+# Provides a complete Apache Spark + Sedona environment with:
+# - Spark Master & Worker nodes
+# - Jupyter Notebook integration
+# - PySpark shell access
+# - GeoTools wrapper for full spatial functionality (fixes FactoryException)
+
 services:
   # Spark Master
   spark-master:
