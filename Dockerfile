@@ -6,7 +6,7 @@ FROM openjdk:11-jre-slim
 # Set environment variables
 ENV SPARK_VERSION=3.4.0
 ENV HADOOP_VERSION=3
-ENV SEDONA_VERSION=1.4.1
+ENV SEDONA_VERSION=1.8.0
 ENV SPARK_HOME=/opt/spark
 ENV JAVA_HOME=/usr/local/openjdk-11
 ENV PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
@@ -38,7 +38,7 @@ RUN wget -q -P $SPARK_HOME/jars/ \
 # This fixes the FactoryException and provides full GeoTools functionality
 RUN echo "Downloading GeoTools wrapper for Sedona ${SEDONA_VERSION}..." && \
     wget -q -P $SPARK_HOME/jars/ \
-    https://repo1.maven.org/maven2/org/datasyslab/geotools-wrapper/1.4.0-28.2/geotools-wrapper-1.4.0-28.2.jar && \
+    https://repo1.maven.org/maven2/org/datasyslab/geotools-wrapper/1.6.1-28.2/geotools-wrapper-1.6.1-28.2.jar && \
     echo "GeoTools wrapper downloaded successfully (fixes FactoryException)"
 
 # Download additional spatial dependencies

@@ -2,7 +2,7 @@
 
 A complete, production-ready Docker environment for **Apache Sedona** (formerly GeoSpark) with Apache Spark, featuring comprehensive spatial analytics capabilities, interactive Jupyter notebooks, and a full Python data science stack.
 
-[![Apache Sedona](https://img.shields.io/badge/Apache%20Sedona-1.4.1-blue)](https://sedona.apache.org/)
+[![Apache Sedona](https://img.shields.io/badge/Apache%20Sedona-1.8.0-blue)](https://sedona.apache.org/)
 [![Apache Spark](https://img.shields.io/badge/Apache%20Spark-3.4.0-orange)](https://spark.apache.org/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-green)](https://www.docker.com/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Lab%20%26%20Notebook-orange)](https://jupyter.org/)
@@ -34,8 +34,8 @@ Execute the **"🚀 QUICK START: Run All Prerequisites"** cell in the notebook t
 
 ### 🔧 Core Technologies
 - **Apache Spark 3.4.0** - Distributed computing with Hadoop 3.3.4
-- **Apache Sedona 1.4.1** - Complete spatial analytics (Core, SQL, Viz modules)
-- **GeoTools Wrapper 1.4.0-28.2** - Full spatial functionality (fixes FactoryException)
+- **Apache Sedona 1.8.0** - Complete spatial analytics (Core, SQL, Viz modules)
+- **GeoTools Wrapper 1.6.1-28.2** - Full spatial functionality (fixes FactoryException)
 - **Python 3.11** - Latest stable Python runtime
 
 ### 📊 Data Science Stack
@@ -121,7 +121,7 @@ folium.plugins.HeatMap(hotspot_data).add_to(m)
 | Component | Version | Configuration |
 |-----------|---------|---------------|
 | Apache Spark | 3.4.0 | Standalone cluster mode |
-| Apache Sedona | 1.4.1 | Core + SQL + Viz modules |
+| Apache Sedona | 1.8.0 | Core + SQL + Viz modules |
 | Hadoop | 3.3.4 | Distributed file system |
 | Scala | 2.12 | JVM runtime |
 | Python | 3.11 | Latest stable |

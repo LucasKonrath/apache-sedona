@@ -6,7 +6,7 @@ A production-ready Docker setup for **Apache Sedona** spatial analytics with **A
 
 ### **Core Spatial Stack**
 - **Apache Spark 3.4.0** - Distributed computing with Hadoop 3 support
-- **Apache Sedona 1.4.1** - Complete spatial data processing system
+- **Apache Sedona 1.8.0** - Complete spatial data processing system
 - **GeoTools Wrapper** - Full spatial functionality ✅ **(Fixes FactoryException)**
 - **Python/PySpark Integration** - Seamless spatial analytics in Python
 
