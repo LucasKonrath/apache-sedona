@@ -76,13 +76,17 @@ docker run -it apache-sedona shell                # Spark Scala shell
 
 ```
 apache-sedona/
-├── Dockerfile              # Main container definition
-├── docker-compose.yml      # Multi-service orchestration
-├── .dockerignore           # Docker build optimization
-├── notebooks/              # Jupyter notebooks
-│   └── sedona-example.ipynb
-├── data/                   # Spatial data files
-└── README.md              # This file
+├── Dockerfile                      # Main container definition
+├── docker-compose.yml              # Multi-service orchestration
+├── .dockerignore                   # Docker build optimization
+├── notebooks/                      # Jupyter notebooks
+│   ├── advanced-sedona-examples.ipynb  # 18 comprehensive examples
+│   └── sedona-example.ipynb        # Basic examples
+├── data/                           # Spatial data files
+├── ADVANCED_EXAMPLES.md            # Detailed guide to all examples
+├── QUICK_REFERENCE.md              # Quick reference for common patterns
+├── UPGRADE_NOTES.md                # Version upgrade information
+└── README.md                       # This file
 ```
 
 ## Example Usage
@@ -204,10 +208,27 @@ docker run -it apache-sedona bash
 
 ## Resources
 
+### Documentation
 - [Apache Sedona Documentation](https://sedona.apache.org/)
 - [Apache Spark Documentation](https://spark.apache.org/docs/latest/)
 - [Spatial SQL Reference](https://sedona.apache.org/api/sql/Overview/)
 - [Python API Documentation](https://sedona.apache.org/api/python/)
+
+### Project Guides
+- **[ADVANCED_EXAMPLES.md](ADVANCED_EXAMPLES.md)** - Comprehensive guide to 18 spatial analysis examples
+- **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Quick reference for common spatial patterns
+- **[UPGRADE_NOTES.md](UPGRADE_NOTES.md)** - Version upgrade information and changelog
+
+### Example Notebooks
+- **advanced-sedona-examples.ipynb** - 18 comprehensive spatial analysis scenarios including:
+  - Buffer zones & proximity analysis
+  - Distance matrix calculations
+  - Origin-destination flow analysis
+  - Spatial outlier detection
+  - Grid-based aggregation
+  - Interactive visualizations
+  - Performance optimization techniques
+- **sedona-example.ipynb** - Basic introduction to Sedona features
 
 ## License
 
