@@ -2,6 +2,10 @@
 
 A production-ready Docker setup for **Apache Sedona** spatial analytics with **Apache Spark 3.4.0**, featuring a complete data science stack and advanced spatial capabilities.
 
+> **⚠️ Important Notes**:
+> 1. This project uses **Sedona 1.8.0** with API changes. See [SEDONA_1.8_CHANGES.md](SEDONA_1.8_CHANGES.md)
+> 2. **When opening `advanced-sedona-examples.ipynb`**: Run `Kernel → Restart & Run All` to ensure all geometry columns are created correctly. See [MUST_RERUN_CELLS.md](MUST_RERUN_CELLS.md)
+
 ## 🎯 Features
 
 ### **Core Spatial Stack**
@@ -217,7 +221,9 @@ docker run -it apache-sedona bash
 ### Project Guides
 - **[ADVANCED_EXAMPLES.md](ADVANCED_EXAMPLES.md)** - Comprehensive guide to 18 spatial analysis examples
 - **[QUICK_REFERENCE.md](QUICK_REFERENCE.md)** - Quick reference for common spatial patterns
+- **[SQL_CHEATSHEET.md](SQL_CHEATSHEET.md)** - Copy-paste SQL patterns for common tasks
 - **[UPGRADE_NOTES.md](UPGRADE_NOTES.md)** - Version upgrade information and changelog
+- **[SEDONA_1.8_CHANGES.md](SEDONA_1.8_CHANGES.md)** - ⚠️ Important API changes in version 1.8.0
 
 ### Example Notebooks
 - **advanced-sedona-examples.ipynb** - 18 comprehensive spatial analysis scenarios including:

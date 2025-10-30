@@ -26,6 +26,22 @@ This project has been upgraded from Apache Sedona 1.4.1 to 1.8.0.
 #### notebooks/real-sedona-example-dataset.ipynb
 - Updated prerequisites section from 1.4.1 to 1.8.0
 
+#### notebooks/advanced-sedona-examples.ipynb
+- Fixed spatial function imports (removed Python imports, use SQL only)
+- Updated to use Sedona 1.8.0 API pattern
+- All spatial functions now accessed via SQL or `expr()`
+
+### 4. API Changes (Important!)
+
+**⚠️ Breaking Change**: In Sedona 1.8.0, spatial functions are no longer imported from `sedona.sql.st_functions`.
+
+See **[SEDONA_1.8_CHANGES.md](SEDONA_1.8_CHANGES.md)** for complete migration guide.
+
+**Quick Fix**:
+- ❌ Old: `from sedona.sql.st_functions import ST_Buffer`
+- ✅ New: Use SQL - `spark.sql("SELECT ST_Buffer(geom, 0.01) ...")`
+- ✅ New: Use expr - `expr("ST_Buffer(geom, 0.01)")`
+
 ## Next Steps
 
 ### To apply the upgrade:
